@@ -7,6 +7,8 @@ services:
       context: ./node
     ports:
       - '3000:3000'
+    depends_on:
+      - db
     networks:
       - app-network
 
@@ -19,6 +21,20 @@ services:
       - '8080:80'
     networks:
       - app-network
+
+  db:
+    build: 
+      context: ./mysql
+    container_name: db
+    restart: always
+    tty: true
+    networks:
+      - app-network
+    volumes:
+      - ./mysql/volume:/var/lib/mysql:rw
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
 
 networks:
   app-network:
