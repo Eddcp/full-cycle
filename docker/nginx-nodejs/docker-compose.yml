@@ -9,7 +9,7 @@ services:
       - ./node:/app
     ports:
       - '3000:3000'
-    entrypoint: wait-for db:3306 -t 40 -- docker-entrypoint.sh
+    entrypoint: wait-for db:3306 -t 40 -- ./start.sh
     depends_on:
       - db
     networks:
