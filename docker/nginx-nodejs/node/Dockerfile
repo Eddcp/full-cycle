@@ -5,11 +5,10 @@ RUN apt update && \
     wget -q -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for && \
     chmod +x /usr/bin/wait-for
 
+USER node
+
 WORKDIR /app
 
 COPY . .
-
-RUN npm i
-RUN npm run build
 
 EXPOSE 3000
