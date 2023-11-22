@@ -126,7 +126,8 @@ describe("Order repository test", () => {
 
     await orderRepository.update(order);
     const updatedOrderModel = await OrderModel.findOne({
-      where: { id: "123" },
+      where: { id: order.id },
+      include: ["items"],
     });
 
     // Assert
@@ -135,6 +136,24 @@ describe("Order repository test", () => {
       customer_id: "123",
       total:
         product.price * productOneQuantity + product.price * productTwoQuantity,
+      items: [
+        {
+          id: orderItem.id,
+          name: orderItem.name,
+          price: orderItem.price,
+          quantity: orderItem.quantity,
+          order_id: "123",
+          product_id: "123",
+        },
+        {
+          id: anotherItem.id,
+          name: anotherItem.name,
+          price: anotherItem.price,
+          quantity: anotherItem.quantity,
+          order_id: "123",
+          product_id: "123",
+        },
+      ],
     });
   });
 
