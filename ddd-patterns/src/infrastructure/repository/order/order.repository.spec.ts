@@ -8,8 +8,8 @@ import OrderModel from "./order.model";
 import ProductModel from "../product/product.model";
 import ProductRepository from "../product/product.repository";
 import Product from "../../../domain/product/entity/product";
-import OrderItem from "../../../domain/order/entity/order-item";
-import Order from "../../../domain/order/entity/order";
+import OrderItem from "../../../domain/checkout/order/entity/order-item";
+import Order from "../../../domain/checkout/order/entity/order";
 import OrderRepository from "./order.repository";
 
 describe("Order repository test", () => {
