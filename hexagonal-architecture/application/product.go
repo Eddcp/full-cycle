@@ -42,7 +42,6 @@ type ProductPersistenceInterface interface {
 	ProductWriter
 }
 
-
 const (
 	DISABLED = "disabled"
 	ENABLED  = "enabled"
@@ -53,6 +52,11 @@ type Product struct {
 	Name   string  `valid:"required"`
 	Price  float64 `valid:"float,optional"`
 	Status string  `valid:"required"`
+}
+
+// ChangePrice implements ProductInterface.
+func (*Product) ChangePrice(price float64) error {
+	panic("unimplemented")
 }
 
 func NewProduct() *Product {
